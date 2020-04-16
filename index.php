@@ -1,3 +1,9 @@
+<!-- CURSO:Programacion3
+     PROFESOR:Noé Otoniel Nájera Morales
+     AUTORES: Sebastian Morales Barboza
+              Lureth Zuñiga Fonseca
+              Mónica Vega Garbanzo
+-->
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -28,7 +34,7 @@
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <!-- preloader area start -->
+    <!-- preloader area start
     <div id="preloader">
         <div class="loader"></div>
     </div>
@@ -67,7 +73,7 @@
     <!-- login area end -->
 
 <?php
-session_start();
+//session_start();
 include "Controlador/ControladorLogin.php";
 $cLogin = new ControladorLogin();
 
@@ -78,22 +84,16 @@ if($_POST){
   $user = $_POST['txt_email'];
   $contrasena = $_POST['txt_contrasena'];
 
-$resultLogin = $clogin->ingreso($user,$contrasena);
-echo $resultLogin;
-    //if($resultlLogin == false){
-      //echo "no sepudo inciar Ingresar al sistema";
-    //}else{
-      //header("Location:ModuloUsuarios/UsuarioCreate.php");
-  //  }
+$resulLogin = $cLogin->ingreso($user,$contrasena);
+//var_dump($resulLogin);
+    if($resulLogin == "error"){
+      echo "No se pudo Ingresar al sistema";
+    }else{
+      header("Location:Vista/ModuloUsuarios/UsuariosCreate.php");
+    }
 
 }
-
-
-
-
  ?>
-
-
 
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
