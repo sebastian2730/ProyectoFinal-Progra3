@@ -5,6 +5,9 @@
               Mónica Vega Garbanzo
 -->
 <!doctype html>
+<?php
+include "../../Controlador/ControladorPeriodo.php";
+ ?>
 <html class="no-js" lang="en">
 
 <head>
@@ -41,20 +44,6 @@ include "../Menus/Administradores.php";
             <div class="container">
                 <div class="row">
                   <!-- basic form start -->
-                  <div class="col-12 mt-5">
-                      <div class="card">
-                          <div class="card-body">
-                              <h4 class="header-title">Eliminar Periodos</h4>
-                              <form action="../Vista/ModuloPeriodo/PeriodoDelete.php" method="POST">
-                                <div class="form-group">
-                                     <input class="form-control"  type="text" name="buscar" placeholder="Buscar" id="example-text-input"required>
-                                </div>
-                                  <button class="btn btn-primary mt-4 pr-4 pl-4" type="submit" name="btn_EliminarPeriodo" value="Buscar">Buscar</button>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                   <!-- basic form end -->
 
                   <!-- Progress Table start -->
                   <div class="col-12 mt-5">
@@ -74,16 +63,47 @@ include "../Menus/Administradores.php";
                                           </thead>
                                           <tbody>
                                               <tr>
-                                                <th></th>
-                                                <td></td>
-                                                <td>
-                                                  <ul class="d-flex justify-content-center">
-                                                    <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>
-                                                  </ul>
-                                                </td>
+                                                <?php
+                                                $ControladorPerido = new ControladorPeriodo();
+
+                                                $datosPeriodo = new ArrayObject();
+                                                $todosDatos = $ControladorPerido->ConsultarPeriodo();
+
+                                                for ($i=0; $i <= count($todosDatos) - 1; $i++) {
+                                                  // code...
+                                                  $unaFila = $todosDatos->offsetGet($i);
+                                                echo "<tr><form action='PeriodoDelete.php' method= 'POST'>";
+                                                echo "<input type='hidden' name='idPeriodo' value='".$unaFila->getIdPeriodo()."'>";
+                                                echo "<input type='hidden' name='periodo' value='".$unaFila->getPeriodo()."'>";
+                                                echo "<th scope='col'>" . $unaFila->getIdPeriodo() . "</th>";
+                                                echo "<th scope='col'>" . $unaFila->getPeriodo() . "</th>";
+                                                echo "<th scope='col'><h6> <input type='submit'  value='Eliminar' class=' text-danger'></h6></th>";
+
+                                                echo "</form></tr>";
+
+                                              }
+                                                 ?>
+
                                               </tr>
                                           </tbody>
                                       </table>
+
+                                      <?php
+
+                                      if ($_POST){
+                                        $idPeriodo = $_POST['idPeriodo'];
+                                      $periodo = $_POST['periodo'];
+
+                                        if($ControladorPerido->Eliminar($idPeriodo)){
+                                          echo "<script>"
+                                          . "alert('El periodo: ". $periodo . "  se ha "
+                                          . " eliminado correctamente'); "
+                                          . "window.location = '/ProyectoFinal-Progra3/Vista/ModuloPeriodo/PeriodoDelete.php';"
+                                          . "</script>";
+                                        }
+                                      }
+
+                                      ?>
                                   </div>
                               </div>
                           </div>

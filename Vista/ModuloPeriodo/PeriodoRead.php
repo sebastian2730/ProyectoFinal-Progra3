@@ -4,6 +4,9 @@
               Lureth Zuñiga Fonseca
               Mónica Vega Garbanzo
 -->
+<?php
+include "../../Controlador/ControladorPeriodo.php";
+ ?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -55,12 +58,28 @@ include "../Menus/Administradores.php";
                                                 <th scope="col"></th>
 
                                               </tr>
+
+
+
                                           </thead>
                                           <tbody>
                                               <tr>
-                                                <th></th>
-                                                <td></td>
-                                                <td></td>
+                                                <?php
+                                                $ControladorPerido = new ControladorPeriodo();
+
+                                                $datosPeriodo = new ArrayObject();
+                                                $todosDatos = $ControladorPerido->ConsultarPeriodo();
+
+                                                for ($i=0; $i <= count($todosDatos) - 1; $i++) {
+                                                  // code...
+                                                  $unaFila = $todosDatos->offsetGet($i);
+
+                                                echo "<th scope='col'>" . $unaFila->getIdPeriodo() . "</th>";
+                                                echo "<th scope='col'>" . $unaFila->getPeriodo() . "</th>";
+
+                                                echo "</tr>";
+                                                }
+                                                 ?>
                                               </tr>
                                           </tbody>
                                       </table>

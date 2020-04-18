@@ -27,11 +27,11 @@ class ModeloPeriodo{
     //--------------------------------------------------------
     //SETTER
     //-------------------------------------------------------
-    function setIdPeriodo($idPeriodo): void {
+    function setIdPeriodo($idPeriodo){
         $this->idPeriodo = $idPeriodo;
     }
 
-    function setPeriodo($periodo): void {
+    function setPeriodo($periodo){
         $this->periodo = $periodo;
     }
 

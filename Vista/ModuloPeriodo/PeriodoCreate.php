@@ -66,7 +66,7 @@ include "../Menus/Administradores.php";
                               if($miControladorPeriodo->InsertarPeriodo($miModeloPeriodo))   {
                                   echo"<script>"
                                   ."alert('Datos guardados exitosamente');"
-                                . "window.location = '/ProyectoFinal-Progra3-master/Vista/ModuloPeriodo/PeriodoCreate.php';"
+                                . "window.location = '/ProyectoFinal-Progra3/Vista/ModuloPeriodo/PeriodoCreate.php';"
                                 ." </script>";
                               }
 
