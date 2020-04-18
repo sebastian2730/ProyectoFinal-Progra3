@@ -45,17 +45,36 @@ include "../Menus/Administradores.php";
                       <div class="card">
                           <div class="card-body">
                               <h4 class="header-title">Crear Periodo</h4>
-                              <form action="../Vista/ModuloPeriodo/PeriodoCreate.php" method="POST" >
+                              <form action="PeriodoCreate.php" method="POST">
                                 <div class="form-group">
-                                     <label class="col-form-label">Periodo</label>
-                                             <select class="form-control">
-                                               <option></option>
-                                               <option></option>
-                                               <option></option>
-                                             </select>
+                                     <input class="form-control"  type="text" name="periodo" placeholder="Periodo"required>
                                   </div>
-                                  <button class="btn btn-primary mt-4 pr-4 pl-4" type="submit" name="btn_GuardarPeriodo" value="Guardar">Guardar</button>
+                                  <input  type="submit" name="bt_Enviar" value="Crear Periodo" class="btn btn-primary mt-4 pr-4 pl-4"><br><br>
                               </form>
+
+                              <?php
+                              // put your code here
+
+                              include '../../Controlador/ControladorPeriodo.php';
+
+                              $miControladorPeriodo = new ControladorPeriodo();
+                              $miModeloPeriodo = new ModeloPeriodo();
+
+                              if ($_POST){
+                                   $miModeloPeriodo->setPeriodo($_POST['periodo']);
+
+                              if($miControladorPeriodo->InsertarPeriodo($miModeloPeriodo))   {
+                                  echo"<script>"
+                                  ."alert('Datos guardados exitosamente');"
+                                . "window.location = '/ProyectoFinal-Progra3-master/Vista/ModuloPeriodo/PeriodoCreate.php';"
+                                ." </script>";
+                              }
+
+                              }
+
+                              ?>
+
+
                           </div>
                       </div>
                   </div>
@@ -73,6 +92,8 @@ include "../Menus/Administradores.php";
         <!-- footer area end-->
     </div>
 
+
+
     <!-- jquery latest version -->
     <script src="../../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
@@ -82,6 +103,8 @@ include "../Menus/Administradores.php";
     <script src="../../assets/js/metisMenu.min.js"></script>
     <script src="../../assets/js/jquery.slimscroll.min.js"></script>
     <script src="../../assets/js/jquery.slicknav.min.js"></script>
+
+
 
     <!-- start chart js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
@@ -107,5 +130,8 @@ include "../Menus/Administradores.php";
     <!-- others plugins -->
     <script src="../../assets/js/plugins.js"></script>
     <script src="../../assets/js/scripts.js"></script>
+
+
+
 </body>
 </html>
