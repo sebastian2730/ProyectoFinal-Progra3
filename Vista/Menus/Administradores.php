@@ -38,7 +38,6 @@
                                     <ul class="submenu">
                                         <li><a href="../ModuloUsuarios/UsuariosCreate.php">Crear Usuarios</a></li>
                                         <li><a href="../ModuloUsuarios/UsuariosRead.php">Ver Usuarios</a></li>
-                                        <li><a href="../ModuloUsuarios/UsuariosUpdate.php">Editar Usuarios</a></li>
                                         <li><a href="../ModuloUsuarios/UsuariosDelete.php">Eliminar Usuarios</a></li>
                                     </ul>
                                 </li>
@@ -47,7 +46,6 @@
                                     <ul class="submenu">
                                       <li><a href="../ModuloEstudiantes/EstudiantesCreate.php">Crear Estudiantes</a></li>
                                       <li><a href="../ModuloEstudiantes/EstudiantesRead.php">Ver Estudiantes</a></li>
-                                      <li><a href="../ModuloEstudiantes/EstudiantesUpdate.php">Editar Estudiantes</a></li>
                                       <li><a href="../ModuloEstudiantes/EstudiantesDelete.php">Eliminar Estudiantes</a></li>
                                     </ul>
                                 </li>
@@ -56,7 +54,6 @@
                                     <ul class="submenu">
                                       <li><a href="../ModuloMateria/MateriaCreate.php">Crear Materias</a></li>
                                       <li><a href="../ModuloMateria/MateriaRead.php">Ver Materias</a></li>
-                                      <li><a href="../ModuloMateria/MateriaUpdate.php">Editar Materias</a></li>
                                       <li><a href="../ModuloMateria/MateriaDelete.php">Eliminar Materias</a></li>
                                     </ul>
                                 </li>
@@ -65,7 +62,6 @@
                                     <ul class="submenu">
                                       <li><a href="../ModuloPeriodo/PeriodoCreate.php">Crear Periodos</a></li>
                                       <li><a href="../ModuloPeriodo/PeriodoRead.php">Ver Periodos</a></li>
-                                      <li><a href="../ModuloPeriodo/PeriodoUpdate.php">Editar Periodos</a></li>
                                       <li><a href="../ModuloPeriodo/PeriodoDelete.php">Eliminar Periodos</a></li>
 
                                     </ul>
@@ -75,7 +71,6 @@
                                     <ul class="submenu">
                                       <li><a href="../ModuloPromedio/PromedioCreate.php">Crear Promedios</a></li>
                                       <li><a href="../ModuloPromedio/PromedioRead.php">Ver Promedios</a></li>
-                                      <li><a href="../ModuloPromedio/PromedioUpdate.php">Editar Promedios</a></li>
                                       <li><a href="../ModuloPromedio/PromedioDelete.php">Eliminar Promedios</a></li>
                                     </ul>
                                 </li>

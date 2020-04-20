@@ -55,7 +55,7 @@ include "../Menus/Administradores.php";
                                               <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Periodo</th>
-                                                <th scope="col"></th>
+
 
                                               </tr>
 

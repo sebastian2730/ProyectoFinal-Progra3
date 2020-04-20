@@ -64,6 +64,45 @@ class ControladorPeriodo{
 
     }
 
+    public function SelecPeriodoDatos($idPeriodo){
+   $datosPeriodo = new ArrayObject();
+   $miCnx = new DB_Conexion();
+   $connectDB = $miCnx->ConnectDB();
+   $result = $connectDB->query("SELECT * FROM periodo WHERE idPeriodo='".$idPeriodo."'");
+
+   $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+   if (empty($rows)) {
+     return null;
+     // code...
+   }else{
+     foreach ($rows as $i) {
+       // code...
+       $modeloPeriodo = new ModeloPeriodo();
+       $modeloPeriodo->setIdPeriodo($i['idPeriodo']);
+       $modeloPeriodo->setPeriodo($i['periodo']);
+
+       $datosPeriodo->append($modeloPeriodo);
+     }
+     return $datosPeriodo;
+   }
+   $miCnx->DisconnectDB();
+   }
+
+   public function Actualizar($param, $periodo){
+   $miCnx = new DB_Conexion();
+   $connectDB= $miCnx->ConnectDB();
+
+   if($connectDB->query("UPDATE proyectofinal_progra3.periodo SET periodo = '$periodo' WHERE idPeriodo= $param")){
+
+     return true;
+   }else{
+     return false;
+   }
+
+
+   }
+
     }
 
 

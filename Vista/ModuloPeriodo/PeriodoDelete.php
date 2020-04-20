@@ -58,6 +58,7 @@ include "../Menus/Administradores.php";
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Periodo</th>
                                                 <th scope="col">Opción Eliminar</th>
+                                                <th scope="col">Opción Actualizar</th>
 
                                               </tr>
                                           </thead>
@@ -78,6 +79,8 @@ include "../Menus/Administradores.php";
                                                 echo "<th scope='col'>" . $unaFila->getIdPeriodo() . "</th>";
                                                 echo "<th scope='col'>" . $unaFila->getPeriodo() . "</th>";
                                                 echo "<th scope='col'><h6> <input type='submit'  value='Eliminar' class=' text-danger'></h6></th>";
+                                                echo "<th scope='col'><h6><a class=' text-danger' href='PeriodoUpdate.php?id=".$unaFila->getIdPeriodo()."'>Actualizar</a></h6></th>";
+
 
                                                 echo "</form></tr>";
 
@@ -89,7 +92,7 @@ include "../Menus/Administradores.php";
                                       </table>
 
                                       <?php
-
+  $ControladorPerido = new ControladorPeriodo();
                                       if ($_POST){
                                         $idPeriodo = $_POST['idPeriodo'];
                                       $periodo = $_POST['periodo'];

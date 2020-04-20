@@ -4,6 +4,13 @@
               Lureth Zuñiga Fonseca
               Mónica Vega Garbanzo
 -->
+<?php
+
+include '../../Controlador/ControladorPeriodo.php';
+
+
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -40,56 +47,70 @@ include "../Menus/Administradores.php";
         <div class="main-content-inner">
             <div class="container">
                 <div class="row">
-                  <!-- basic form start -->
+                  <!-- basic form star -->
                   <div class="col-12 mt-5">
                       <div class="card">
                           <div class="card-body">
-                              <h4 class="header-title">Editar Periodos</h4>
-                              <form action="../Vista/ModuloPeriodo/PeriodoUpdate.php" method="POST">
-                                <div class="form-group">
-                                     <input class="form-control"  type="text" name="buscar" placeholder="Buscar" id="example-text-input"required>
-                                </div>
-                                  <button class="btn btn-primary mt-4 pr-4 pl-4" type="submit" name="btn_BuscarPeriodo" value="Buscar">Buscar</button>
-                              </form>
+                              <h4 class="header-title">Editar Periodo</h4>
+                              <?php
+
+
+                              $miControladorPeriodo = new ControladorPeriodo();
+
+                              if(isset($_GET['id'])){
+
+                                $id = $_GET['id'];
+                                $datosPeriodo = new ArrayObject();
+                                $resultDatos= $miControladorPeriodo->SelecPeriodoDatos($id);
+
+
+                                for ($i=0; $i <= count($resultDatos) - 1; $i++) {
+
+                                $unaFila = $resultDatos->offsetGet($i);
+
+                                  echo "<form action='PeriodoUpdate.php' method='POST'>";
+                                  echo "<input type='hidden' name='id' value='".$unaFila->getIdPeriodo()."'>";
+                                  echo "<div class='form-group'>";
+                                  echo "<label>Nombre</label>";
+                                  echo "<input class='form-control'  value='".$unaFila->getPeriodo()."' type='text' name='periodo' placeholder='Periodo'required>  ";
+                                  echo "</div>";
+                                  echo "<input type='submit'  name='editar' value='Actualizar' class='btn btn-primary mt-4 pr-4 pl-4'>";
+
+                                  echo "</form>";
+                                }
+
+                              }
+                              // else{
+                                // echo"<script>"
+                                // ."alert('No se conoce el ID del Periodo');"
+                              // . "window.location = '/ProyectoFinal-Progra3/Vista/ModuloPeriodo/PeriodoDelete.php';"
+                              // ." </script>";
+                              // }
+
+                               ?>
+
                           </div>
+
+                          <?php
+
+  $ControladorPerido = new ControladorPeriodo();
+                          if ($_POST){
+                            $id = $_POST['id'];
+                          $periodo = $_POST['periodo'];
+
+                            if($ControladorPerido->Actualizar($id, $periodo)){
+                              echo "<script>"
+                              . "alert('El ". $periodo . "  se ha "
+                              . " actualizado correctamente'); "
+                              . "window.location = '/ProyectoFinal-Progra3/Vista/ModuloPeriodo/PeriodoDelete.php';"
+                              . "</script>";
+                            }
+                          }
+
+                          ?>
                       </div>
                   </div>
-                   <!-- basic form end -->
-
-                   <!-- Progress Table start -->
-                   <div class="col-12 mt-5">
-                       <div class="card">
-                           <div class="card-body">
-                               <h4 class="header-title">Editar Periodos</h4>
-                               <div class="single-table">
-                                   <div class="table-responsive">
-                                       <table class="table table-hover progress-table text-center">
-                                           <thead class="text-uppercase">
-                                               <tr>
-                                                 <th scope="col">ID</th>
-                                                 <th scope="col">Periodo</th>
-                                                 <th scope="col">Opción Eliminar</th>
-
-                                               </tr>
-                                           </thead>
-                                           <tbody>
-                                               <tr>
-                                                 <th></th>
-                                                 <td></td>
-                                                 <td>
-                                                   <ul class="d-flex justify-content-center">
-                                                     <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>
-                                                   </ul>
-                                                 </td>
-                                               </tr>
-                                           </tbody>
-                                       </table>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   <!-- Progress Table end -->
+                  <!-- basic form end -->
                 </div>
             </div>
         </div>
@@ -97,7 +118,7 @@ include "../Menus/Administradores.php";
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2020. Todos los derechos reservados.<br> Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                <p>©️ Copyright 2020. Todos los derechos reservados.<br> Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -105,12 +126,7 @@ include "../Menus/Administradores.php";
 
     <!-- jquery latest version -->
     <script src="../../assets/js/vendor/jquery-2.2.4.min.js"></script>
-    <!-- bootstrap 4 js -->
-    <script src="../../assets/js/popper.min.js"></script>
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/metisMenu.min.js"></script>
-    <script src="../../assets/js/owl.carousel.min.js"></script>
-    <script src="../../assets/js/jquery.slimscroll.min.js"></script>
+    <!-- bootstrap 4 js -->ets/js/jquery.slimscroll.min.js"></script>
     <script src="../../assets/js/jquery.slicknav.min.js"></script>
 
     <!-- start chart js -->

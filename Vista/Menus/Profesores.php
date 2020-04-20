@@ -38,7 +38,6 @@
                                     <ul class="submenu">
                                       <li><a href="../ModuloPromedio/PromedioCreate.php">Crear Promedios</a></li>
                                       <li><a href="../ModuloPromedio/PromedioRead.php">Ver Promedios</a></li>
-                                      <li><a href="../ModuloPromedio/PromedioUpdate.php">Editar Promedios</a></li>
                                       <li><a href="../ModuloPromedio/PromedioDelete.php">Eliminar Promedios</a></li>
                                     </ul>
                                 </li>
